@@ -1,1 +1,1 @@
-CSE482 Project
+CSE482 Project -- NGO Management System.
