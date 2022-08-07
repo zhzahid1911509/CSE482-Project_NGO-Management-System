@@ -13,6 +13,10 @@ $donor_id = $_POST['donor_id'];
 $query = "SELECT * FROM donor_list WHERE `Donor_Id` ='$donor_id'";
 $result = mysqli_query($MySQLi_connection, $query);  
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+$query1 = "SELECT * FROM project_list";
+$result1 = mysqli_query($MySQLi_connection, $query1); 
+$rows = mysqli_num_rows($result1); 
 ?>
 
 <!DOCTYPE html>
@@ -67,13 +71,17 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <input type="email" name="email" value="<?php echo $row['Email']; ?>" required> 
 
     <label for="projectname"><b>Where Do You Want to Donate</b></label>
-    <select class ="select" name="projects" required>
-    <option disabled selected>Select Project</option>
-    <option value="Syllet Flood">Syllet Flood</option>
-    <option value="Education For Street Children">Education For Street Children</option>
-    <option value="Food and Healthcare Service">Food and Healthcare Service</option>
-    </select>	
 
+    <select class ="select" name="projects" required>
+    <option disabled selected>Select Project</option> 
+    <?php 
+    while($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)){        
+      ?>
+    <option value="<?php echo $row1['Project_Name']; ?>"><?php echo $row1['Project_Name']."- (Money Needed: ".$row1['Total_Money_Needed']."tk , Raised Till Now: ".$row1['Raised_Money']."tk)";?></option> 
+    <?php   
+  }
+    ?>	
+  </select> 
     <label for="amount"><b>Donation Amount(BDT)</b></label>
     <input type="text" placeholder="Enter donation amount" name="amount" required>
     
@@ -86,9 +94,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
   </div>
 </form>
   </div>
-<?php
-}
-?>
+
 
   <div class="footer">
     <div class="wrap-1">
@@ -118,7 +124,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 </div>
 
-
     <script>
         function myFunction()
         {
@@ -133,9 +138,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         }
     </script>
         	
-
-	
-
-
 </body>
 </html>
+<?php
+}
+?>
