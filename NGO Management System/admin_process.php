@@ -1,6 +1,5 @@
 <?php
 
-$session_start();
 $errors = array();
 
 $serverName = "sql308.epizy.com";
