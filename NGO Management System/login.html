@@ -7,12 +7,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-signin-client_id" content="922745483702-nvefrri5gbvetaplpm6dt7rcic4cmj6h.apps.googleusercontent.com">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="login.css">
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-    
+     
 </head>
 <body>
   <div class="header">
@@ -36,7 +35,6 @@
   <div class="loginform">
     <form action="donors_server.php" method="post">
  
-
   <div class="container">
     <h1>Log in to your account</h1>
     <label for="uname"><b>Email</b></label>
@@ -47,71 +45,27 @@
         
     <button type="submit" name="login">Login</button> 
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
+      <a href = "Google-Sign-In/index.html"><b>Google Sign In for User</b></a><br>
     </label>
+    <label>
+      <a href = "admin_login.html"><b>Admin Login</b></a><br>
+    </label>
+    
+     
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div><br>
-
-    <script>
-        function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-    </script> 
-
-    <span class="">Forgot <a href="#">password?</a></span>
-    
     <br>
     <br>
     <span class="">Don't have an account? <a href="donor_signup.html">Create Account</a></span> 
   </div>
 </form>
 
-    
-
   </div>
-
-
-  <div class="footer">
-    <div class="wrap-1">
-        <p class="fcon">About US</p><br>
-        <p class="fcon2"> In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-            demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available. It is also used to temporarily replace text in a process called greeking, which allows designers to consider the form of 
-            a webpage or publication, without the meaning of the text influencing the design.</p>
-    </div>
-    <div class="wrap-1">
-   
-        <p class="fcon">Contact Us</b></p><br>
-        <a href = "admin_login.html"><p class="fcon2">Admin</b></p></a><br> 
-        <p class="fcon2">Adress:</b> </p><br>
-        <p class="fcon2">House:##, Road:##, Block: ##, Banai, Dhaka </p><br>
-        <p class="fcon2">Call: </b>10589</p><br>
-        <a href ="https://www.facebook.com/Audi-Bangladesh-1438759706436292" >
-  <img src ="fb.png" alt="My sample image" width="80">
-</a>   
-
-<a href ="https://www.facebook.com/Audi-Bangladesh-1438759706436292" >
-  <img src ="insta.png" alt="My sample image" width="80">
-</a>
-
-<a href ="https://www.youtube.com/user/AudiofAmerica" >
-  <img src ="youtube.png" alt="My sample image" width="80">
-</a>
-    </div>
 
 </div>
 
-
-
-     
-
-    
 
     <script>
         function myFunction()
@@ -129,8 +83,6 @@
     </script>
         	
 
-	
-
-
+           
 </body>
 </html>
