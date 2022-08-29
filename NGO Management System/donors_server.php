@@ -38,15 +38,30 @@ function getDonorId($n) {
   $address = mysqli_real_escape_string($db, $_POST['address']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
   $repeat_password = mysqli_real_escape_string($db, $_POST['psw-repeat']);
-  $encrypted_password = password_hash($password, PASSWORD_DEFAULT); 
-   
+  $encrypted_password = password_hash($password, PASSWORD_DEFAULT);  
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM `donor_list` WHERE `Donor_Id` = '$donor_id' OR `Email` ='$email' OR `Contact_No` ='$contactNo' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
-  
+
+  //Validate password strength
+  $uppercase = preg_match('@[A-Z]@', $password);
+  $lowercase = preg_match('@[a-z]@', $password);
+  $number    = preg_match('@[0-9]@', $password);
+  $specialChars = preg_match('@[^\w]@', $password);  
+
+  if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+      array_push($errors, "Password does not meet requirements");
+      ?>
+       <html><body><h1>Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.</h1></body>
+       <a href="donor_signup.html"><-Back</a> 
+       </html>
+       <?php 
+    
+  }
+
   if ($user) { // if user exists
     if ($user['Contact_No'] === $contactNo) {
       array_push($errors, "Contact No. already exists");?>
